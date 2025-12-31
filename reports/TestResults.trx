@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d9646881-29f7-41ea-8245-c1ef273a3d67" name="Andrew Home@ANDREWHOME 2025-12-31 17:56:25" runUser="ANDREWHOME\Andrew Home" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2025-12-31T17:56:25.9142990+02:00" queuing="2025-12-31T17:56:25.9142993+02:00" start="2025-12-31T17:56:20.8872753+02:00" finish="2025-12-31T17:56:28.8187612+02:00" />
+  <TestSettings name="default" id="46deafe0-b01e-4abd-abf9-350370f5d5dc">
+    <Deployment runDeploymentRoot="Andrew_Home_ANDREWHOME_2025-12-31_17_56_25" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="643edc97-4cef-45bc-9e0b-b1ee8686abab" testId="2edb5b5d-ab40-1c60-70c2-02f54bba6675" testName="PurchaseAndPaymeGivenItemsInCart_WhenUserCompletesPurchase_ThenPaymentIsSuccessfulntFlowTest" computerName="ANDREWHOME" duration="00:00:01.2632429" startTime="2025-12-31T17:56:27.3932927+02:00" endTime="2025-12-31T17:56:28.6565347+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="643edc97-4cef-45bc-9e0b-b1ee8686abab" />
+    <UnitTestResult executionId="90ab7ca5-88c7-4b29-880f-e7c342a78f03" testId="1c9636a2-d5c4-d5f4-bf1d-d33662667693" testName="GivenUserId_WhenUserIsDeleted_ThenUserIsRemoved" computerName="ANDREWHOME" duration="00:00:03.9213920" startTime="2025-12-31T17:56:21.4777332+02:00" endTime="2025-12-31T17:56:25.3990770+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90ab7ca5-88c7-4b29-880f-e7c342a78f03">
+      <Output>
+        <ErrorInfo>
+          <Message>Expected request.Status to be 204, but found 403 (difference of 199).</Message>
+          <StackTrace>   at FluentAssertions.Execution.LateBoundTestFramework.Throw(String message)&#xD;
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)&#xD;
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)&#xD;
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)&#xD;
+   at FluentAssertions.Numeric.NumericAssertions`2.Be(T expected, String because, Object[] becauseArgs)&#xD;
+   at SAHomeLoansSauceDemo.Tests.ApiTests.GivenUserId_WhenUserIsDeleted_ThenUserIsRemoved() in C:\Dev\SAHomeLoans-saucedemo\tests\ApiTests.cs:line 75&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)&#xD;
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="31dcbefb-e046-4fca-ac34-445a02b7e9e9" testId="b0e962f4-6ef1-0968-9cc7-e61c30f8cddd" testName="GivenValidDetails_WhenUserRegisters_ThenRegistrationIsSuccessful" computerName="ANDREWHOME" duration="00:00:04.0250600" startTime="2025-12-31T17:56:21.4778265+02:00" endTime="2025-12-31T17:56:25.5028865+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31dcbefb-e046-4fca-ac34-445a02b7e9e9">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Text.Json.JsonException : '&lt;' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.&#xD;
+  ----&gt; System.Text.Json.JsonReaderException : '&lt;' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.</Message>
+          <StackTrace>   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack&amp; state, JsonReaderException ex)&#xD;
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader&amp; reader, JsonSerializerOptions options, ReadStack&amp; state)&#xD;
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader&amp; reader, ReadStack&amp; state)&#xD;
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)&#xD;
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](ReadOnlySpan`1 utf8Json, JsonSerializerOptions options)&#xD;
+   at Microsoft.Playwright.Core.APIResponse.JsonAsync() in /_/src/Playwright/Core/APIResponse.cs:line 80&#xD;
+   at SAHomeLoansSauceDemo.Tests.ApiTests.GivenValidDetails_WhenUserRegisters_ThenRegistrationIsSuccessful() in C:\Dev\SAHomeLoans-saucedemo\tests\ApiTests.cs:line 31&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)&#xD;
+--JsonReaderException&#xD;
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader&amp; json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)&#xD;
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)&#xD;
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)&#xD;
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()&#xD;
+   at System.Text.Json.Utf8JsonReader.Read()&#xD;
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader&amp; reader, JsonSerializerOptions options, ReadStack&amp; state)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d8aa5602-73ec-43de-9035-63a1e6b4140a" testId="0b29ed12-e48a-8879-0bbd-114fae9e9acb" testName="GivenItemsInCart_WhenNavigatingToCheckout_ThenOverviewIsCorrect" computerName="ANDREWHOME" duration="00:00:04.7422330" startTime="2025-12-31T17:56:21.4774536+02:00" endTime="2025-12-31T17:56:26.2196865+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8aa5602-73ec-43de-9035-63a1e6b4140a" />
+    <UnitTestResult executionId="fa9cb042-b60e-4ea6-8fcf-3924e2bdd76e" testId="0d35d3e1-55f8-eea4-b5d3-c6ea2ce38a03" testName="GivenUserId_WhenFetchingUser_ThenUserDetailsAreReturned" computerName="ANDREWHOME" duration="00:00:04.0258150" startTime="2025-12-31T17:56:21.4770742+02:00" endTime="2025-12-31T17:56:25.5028891+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa9cb042-b60e-4ea6-8fcf-3924e2bdd76e">
+      <Output>
+        <ErrorInfo>
+          <Message>System.Text.Json.JsonException : '&lt;' is an invalid start of a value. Path: $ | LineNumber: 0 | BytePositionInLine: 0.&#xD;
+  ----&gt; System.Text.Json.JsonReaderException : '&lt;' is an invalid start of a value. LineNumber: 0 | BytePositionInLine: 0.</Message>
+          <StackTrace>   at System.Text.Json.ThrowHelper.ReThrowWithPath(ReadStack&amp; state, JsonReaderException ex)&#xD;
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader&amp; reader, JsonSerializerOptions options, ReadStack&amp; state)&#xD;
+   at System.Text.Json.Serialization.Metadata.JsonTypeInfo`1.Deserialize(Utf8JsonReader&amp; reader, ReadStack&amp; state)&#xD;
+   at System.Text.Json.JsonSerializer.ReadFromSpan[TValue](ReadOnlySpan`1 utf8Json, JsonTypeInfo`1 jsonTypeInfo, Nullable`1 actualByteCount)&#xD;
+   at System.Text.Json.JsonSerializer.Deserialize[TValue](ReadOnlySpan`1 utf8Json, JsonSerializerOptions options)&#xD;
+   at Microsoft.Playwright.Core.APIResponse.JsonAsync() in /_/src/Playwright/Core/APIResponse.cs:line 80&#xD;
+   at SAHomeLoansSauceDemo.Tests.ApiTests.GivenUserId_WhenFetchingUser_ThenUserDetailsAreReturned() in C:\Dev\SAHomeLoans-saucedemo\tests\ApiTests.cs:line 54&#xD;
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()&#xD;
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)&#xD;
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.&lt;&gt;c__DisplayClass1_0.&lt;Execute&gt;b__0()&#xD;
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)&#xD;
+--JsonReaderException&#xD;
+   at System.Text.Json.ThrowHelper.ThrowJsonReaderException(Utf8JsonReader&amp; json, ExceptionResource resource, Byte nextByte, ReadOnlySpan`1 bytes)&#xD;
+   at System.Text.Json.Utf8JsonReader.ConsumeValue(Byte marker)&#xD;
+   at System.Text.Json.Utf8JsonReader.ReadFirstToken(Byte first)&#xD;
+   at System.Text.Json.Utf8JsonReader.ReadSingleSegment()&#xD;
+   at System.Text.Json.Utf8JsonReader.Read()&#xD;
+   at System.Text.Json.Serialization.JsonConverter`1.ReadCore(Utf8JsonReader&amp; reader, JsonSerializerOptions options, ReadStack&amp; state)
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e275f0da-ec5d-4eed-9c20-d4d58d008090" testId="04d311ce-b34a-5161-1fc6-df740c9c81f6" testName="GivenValidCredentials_WhenUserLogsIn_ThenLoginIsSuccessful" computerName="ANDREWHOME" duration="00:00:01.1735199" startTime="2025-12-31T17:56:26.2197360+02:00" endTime="2025-12-31T17:56:27.3932550+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e275f0da-ec5d-4eed-9c20-d4d58d008090" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="GivenUserId_WhenFetchingUser_ThenUserDetailsAreReturned" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="0d35d3e1-55f8-eea4-b5d3-c6ea2ce38a03">
+      <Execution id="fa9cb042-b60e-4ea6-8fcf-3924e2bdd76e" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.ApiTests" name="GivenUserId_WhenFetchingUser_ThenUserDetailsAreReturned" />
+    </UnitTest>
+    <UnitTest name="GivenValidDetails_WhenUserRegisters_ThenRegistrationIsSuccessful" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="b0e962f4-6ef1-0968-9cc7-e61c30f8cddd">
+      <Execution id="31dcbefb-e046-4fca-ac34-445a02b7e9e9" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.ApiTests" name="GivenValidDetails_WhenUserRegisters_ThenRegistrationIsSuccessful" />
+    </UnitTest>
+    <UnitTest name="GivenUserId_WhenUserIsDeleted_ThenUserIsRemoved" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="1c9636a2-d5c4-d5f4-bf1d-d33662667693">
+      <Execution id="90ab7ca5-88c7-4b29-880f-e7c342a78f03" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.ApiTests" name="GivenUserId_WhenUserIsDeleted_ThenUserIsRemoved" />
+    </UnitTest>
+    <UnitTest name="PurchaseAndPaymeGivenItemsInCart_WhenUserCompletesPurchase_ThenPaymentIsSuccessfulntFlowTest" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="2edb5b5d-ab40-1c60-70c2-02f54bba6675">
+      <Execution id="643edc97-4cef-45bc-9e0b-b1ee8686abab" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.UITests" name="PurchaseAndPaymeGivenItemsInCart_WhenUserCompletesPurchase_ThenPaymentIsSuccessfulntFlowTest" />
+    </UnitTest>
+    <UnitTest name="GivenItemsInCart_WhenNavigatingToCheckout_ThenOverviewIsCorrect" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="0b29ed12-e48a-8879-0bbd-114fae9e9acb">
+      <Execution id="d8aa5602-73ec-43de-9035-63a1e6b4140a" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.UITests" name="GivenItemsInCart_WhenNavigatingToCheckout_ThenOverviewIsCorrect" />
+    </UnitTest>
+    <UnitTest name="GivenValidCredentials_WhenUserLogsIn_ThenLoginIsSuccessful" storage="c:\dev\sahomeloans-saucedemo\bin\debug\net8.0\sahomeloanssaucedemo.dll" id="04d311ce-b34a-5161-1fc6-df740c9c81f6">
+      <Execution id="e275f0da-ec5d-4eed-9c20-d4d58d008090" />
+      <TestMethod codeBase="C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll" adapterTypeName="executor://nunit3testexecutor/" className="SAHomeLoansSauceDemo.Tests.UITests" name="GivenValidCredentials_WhenUserLogsIn_ThenLoginIsSuccessful" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2edb5b5d-ab40-1c60-70c2-02f54bba6675" executionId="643edc97-4cef-45bc-9e0b-b1ee8686abab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c9636a2-d5c4-d5f4-bf1d-d33662667693" executionId="90ab7ca5-88c7-4b29-880f-e7c342a78f03" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b0e962f4-6ef1-0968-9cc7-e61c30f8cddd" executionId="31dcbefb-e046-4fca-ac34-445a02b7e9e9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0b29ed12-e48a-8879-0bbd-114fae9e9acb" executionId="d8aa5602-73ec-43de-9035-63a1e6b4140a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d35d3e1-55f8-eea4-b5d3-c6ea2ce38a03" executionId="fa9cb042-b60e-4ea6-8fcf-3924e2bdd76e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04d311ce-b34a-5161-1fc6-df740c9c81f6" executionId="e275f0da-ec5d-4eed-9c20-d4d58d008090" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="6" executed="6" passed="3" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 4.6.0.0: Test execution started&#xD;
+Running all tests in C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll&#xD;
+   NUnit3TestExecutor discovered 6 of 6 NUnit test cases using Current Discovery mode, Non-Explicit run&#xD;
+NUnit Adapter 4.6.0.0: Test execution complete&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
