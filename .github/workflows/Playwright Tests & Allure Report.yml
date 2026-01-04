@@ -1,5 +1,9 @@
 name: Playwright Tests & Allure Report
 
+env:
+  SOLUTION_FILE: SAHomeLoansSauceDemo.sln
+  BUILD_CONFIGURATION: Debug
+
 on:
   push:
     branches: [ main, master ]
@@ -13,60 +17,61 @@ permissions:
   id-token: write
 
 jobs:
-  test:
-    timeout-minutes: 60
+  autotests:
+    name: Run tests and generate Allure Report
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v5
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
 
-    - name: Build
-      run: dotnet build
+      - name: Restore NuGet packages
+        run: dotnet restore --packages .packages -p:ContinuousIntegrationBuild=true ${{ env.SOLUTION_FILE }}
 
-    - name: Ensure Playwright browsers are installed
-      run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+      - name: Build solution
+        run: dotnet build --no-restore --configuration ${{ env.BUILD_CONFIGURATION }} ${{ env.SOLUTION_FILE }}
 
-    - name: Run tests
-      run: |
-        dotnet test --configuration Debug --no-build --logger "trx;LogFileName=TestResults.trx"
-      continue-on-error: true
+      - name: Ensure Playwright browsers are installed
+        run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
 
-    - name: Archive raw test results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: raw-test-results
-        path: |
-          **/TestResults/*.trx
-          **/allure-results
+      - name: Test solution
+        run: dotnet test --no-build --configuration ${{ env.BUILD_CONFIGURATION }} ${{ env.SOLUTION_FILE }} --logger "trx;LogFileName=TestResults.trx"
+        continue-on-error: true
 
-    - name: Get Allure history
-      uses: actions/checkout@v4
-      if: always()
-      continue-on-error: true
-      with:
-        ref: gh-pages
-        path: gh-pages
+      - name: Archive raw test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: raw-test-results
+          path: |
+            **/TestResults/*.trx
+            bin/Debug/net8.0/allure-results
 
-    - name: Allure Report Action
-      uses: simple-elf/allure-report-action@v1.7
-      if: always()
-      with:
-        allure_results: bin/Debug/net8.0/allure-results
-        gh_pages: gh-pages
-        allure_report: allure-report
-        allure_history: allure-history
+      - name: Get Allure history
+        uses: actions/checkout@v5
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
 
-    - name: Deploy report to Github Pages
-      if: always()
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_branch: gh-pages
-        publish_dir: allure-history
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@v1.13
+        if: always()
+        with:
+          allure_results: bin/Debug/net8.0/allure-results
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
+
+      - name: Deploy report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: allure-history
+          publish_branch: gh-pages
