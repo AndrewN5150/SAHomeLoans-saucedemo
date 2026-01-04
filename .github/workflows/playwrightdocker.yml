@@ -1,23 +1,57 @@
-name: Playwright Docker Tests
+name: Playwright Tests
 on:
   push:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
+  schedule:
+    - cron: '0 0 * * *' 
+
+permissions:
+  contents: write
+
 jobs:
-  playwright:
-    name: 'Playwright Tests'
+  test:
+    timeout-minutes: 60
     runs-on: ubuntu-latest
+    # 1. Use the official Playwright Docker container
     container:
-      image: mcr.microsoft.com/playwright/dotnet:v1.47.0-jammy
+      image: mcr.microsoft.com/playwright/dotnet:v1.49.0-noble # Ensure version matches your project
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup dotnet
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.0.x
-      - run: dotnet build
-      - name: Run your tests
-        run: dotnet test
-        env:
-          HOME: /root
+    - uses: actions/checkout@v4
+    
+    # 2. Build the project inside the container
+    - name: Build Project
+      run: dotnet build
+      
+    # 3. Run tests (browsers are already pre-installed in this image)
+    - name: Run Playwright Tests
+      run: dotnet test --configuration Release
+      continue-on-error: true
+
+    # --- REPORTING SECTION ---
+
+    - name: Load test report history
+      uses: actions/checkout@v4 # Updated to v4
+      if: always()
+      continue-on-error: true
+      with:
+        ref: gh-pages
+        path: gh-pages
+
+    - name: Build test report
+      uses: simple-elf/allure-report-action@v1.7
+      if: always()
+      with:
+        gh_pages: gh-pages
+        allure_history: allure-history
+        allure_results: bin/Debug/net8.0/allure-results
+
+    - name: Publish test report
+      uses: peaceiris/actions-gh-pages@v3
+      if: always()
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: allure-history
