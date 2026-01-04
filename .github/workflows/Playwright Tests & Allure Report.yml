@@ -5,12 +5,12 @@ on:
     branches: [ main, master ]
   pull_request:
     branches: [ main, master ]
-  schedule:
-    - cron: '0 0 * * *'  # Runs every day at midnight
+  workflow_dispatch:
 
 permissions:
   contents: write
   pages: write
+  id-token: write
 
 jobs:
   test:
@@ -32,53 +32,41 @@ jobs:
     - name: Ensure Playwright browsers are installed
       run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
 
-    - name: Run tests (produce TRX + Allure results)
+    - name: Run tests
       run: |
-        # Ensure results folders exist
-        mkdir -p TestResults
-        # Run tests and produce a TRX and (if configured in your test project) Allure results
-        dotnet test --logger "trx;LogFileName=TestResults.trx" --results-directory TestResults
+        dotnet test --configuration Debug --no-build --logger "trx;LogFileName=TestResults.trx"
       continue-on-error: true
 
-    - name: Archive raw test results (artifact)
+    - name: Archive raw test results
       if: always()
       uses: actions/upload-artifact@v4
       with:
         name: raw-test-results
         path: |
-          TestResults
-          bin/Debug/net8.0/allure-results
+          **/TestResults/*.trx
+          **/allure-results
 
-    - name: Checkout gh-pages branch (load previous Allure history)
-      if: always()
+    - name: Get Allure history
       uses: actions/checkout@v4
+      if: always()
+      continue-on-error: true
       with:
         ref: gh-pages
         path: gh-pages
-        fetch-depth: 0
-      continue-on-error: true
 
-    - name: Generate Allure report (merge history + results)
-      if: always()
+    - name: Allure Report Action
       uses: simple-elf/allure-report-action@v1.7
-      with:
-        gh_pages: gh-pages
-        allure_results: bin/Debug/net8.0/allure-results
-        allure_history: gh-pages/allure-history
-
-    - name: Upload generated report (artifact)
       if: always()
-      uses: actions/upload-artifact@v4
       with:
-        name: allure-report
-        path: gh-pages/allure-report
+        allure_results: bin/Debug/net8.0/allure-results
+        gh_pages: gh-pages
+        allure_report: allure-report
+        allure_history: allure-history
 
-    - name: Publish report to gh-pages (GitHub Pages)
+    - name: Deploy report to Github Pages
       if: always()
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_branch: gh-pages
-        publish_dir: gh-pages
-        user_name: github-actions[bot]
-        user_email: github-actions[bot]@users.noreply.github.com
+        publish_dir: allure-history
