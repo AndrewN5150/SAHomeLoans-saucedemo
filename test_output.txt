@@ -1,0 +1,165 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SAHomeLoansSauceDemo -> C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll
+Test run for C:\Dev\SAHomeLoans-saucedemo\bin\Debug\net8.0\SAHomeLoansSauceDemo.dll (.NETCoreApp,Version=v8.0)
+VSTest version 18.0.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+  Failed TC_ISSUE_001_Repro_BrokenImages [2 s]
+  Error Message:
+     BUG REPRO: Product image failed to load correctly for problem_user.
+Assert.That(imageSrc, Does.Not.Contain("sl-404"))
+  Expected: not String containing "sl-404"
+  But was:  "/static/media/sl-404.168b1cce10384b857a6f.jpg"
+
+  Stack Trace:
+     at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_001_Repro_BrokenImages() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 41
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.<>c__DisplayClass1_0.<Execute>b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_001_Repro_BrokenImages() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 41
+
+
+  Failed TC_ISSUE_002_Repro_SortingFailure [1 s]
+  Error Message:
+     BUG REPRO: Sorting Name (Z to A) did not update the UI.
+Assert.That(firstName, Is.EqualTo("Test.allTheThings() T-Shirt (Red)"))
+  Expected string length 33 but was 19. Strings differ at index 0.
+  Expected: "Test.allTheThings() T-Shirt (Red)"
+  But was:  "Sauce Labs Backpack"
+  -----------^
+
+  Stack Trace:
+     at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_002_Repro_SortingFailure() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 60
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.<>c__DisplayClass1_0.<Execute>b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_002_Repro_SortingFailure() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 60
+
+
+  Failed CART007_AddProductToCart_DisplaysCorrectDetailsOnCartPage [7 s]
+  Error Message:
+   Microsoft.Playwright.PlaywrightException : Locator expected to have text '$29.99'
+But was: '<element(s) not found>' 
+Call log:
+  - LocatorAssertions.ToHaveTextAsync with timeout 5000ms
+  - waiting for Locator("[data-test='inventory-item-name']").Filter(new() { HasText = "Sauce Labs Backpack" }).Locator("[data-test='inventory-item-price']")
+  Stack Trace:
+     at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message) in /_/src/Playwright/Core/AssertionsBase.cs:line 86
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 64
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue textValue, Object expected, String message, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 56
+   at SAHomeLoansSauceDemo.Tests.HighUiTests.CART007_AddProductToCart_DisplaysCorrectDetailsOnCartPage() in C:\Dev\SAHomeLoans-saucedemo\tests\HighUiTests.cs:line 124
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.<>c__DisplayClass1_0.<Execute>b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+  Failed TC_ISSUE_003_Repro_CartRemoveFailure [6 s]
+  Error Message:
+   Microsoft.Playwright.PlaywrightException : Locator expected not to be visible 
+Call log:
+  - LocatorAssertions.ToBeVisibleAsync with timeout 5000ms
+  - waiting for Locator("[data-test=\"shopping-cart-badge\"]")
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  -   locator resolved to <span class="shopping_cart_badge" data-test="shopping-cart-badge">1</span>
+  -   unexpected value "visible"
+  Stack Trace:
+     at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, FrameExpectOptions expectOptions, Object expected, String message) in /_/src/Playwright/Core/AssertionsBase.cs:line 84
+   at Microsoft.Playwright.Core.AssertionsBase.ExpectImplAsync(String expression, ExpectedTextValue[] expectedText, Object expected, String message, FrameExpectOptions options) in /_/src/Playwright/Core/AssertionsBase.cs:line 64
+   at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_003_Repro_CartRemoveFailure() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 76
+   at NUnit.Framework.Internal.TaskAwaitAdapter.GenericAdapter`1.BlockUntilCompleted()
+   at NUnit.Framework.Internal.MessagePumpStrategy.NoMessagePumpStrategy.WaitForCompletion(AwaitAdapter awaiter)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await(Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.BeforeAndAfterTestCommand.<>c__DisplayClass1_0.<Execute>b__0()
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+  Failed TC_ISSUE_004_Repro_LastNameInputBug [1 s]
+  Error Message:
+     BUG REPRO: Last Name field failed to accept or retain the correct string.
+Assert.That(lastNameValue, Is.EqualTo("Doe"))
+  Expected string length 3 but was 0. Strings differ at index 0.
+  Expected: "Doe"
+  But was:  <string.Empty>
+  -----------^
+
+  Stack Trace:
+     at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_004_Repro_LastNameInputBug() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 113
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_004_Repro_LastNameInputBug() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 113
+
+
+  Failed TC_ISSUE_005_Repro_EmptyCartCheckout [1 s]
+  Error Message:
+     BUG REPRO: System allowed a checkout to complete with an empty cart. Users should be blocked from initiating checkout if no products are present.
+Assert.That(isHeaderVisible, Is.False)
+  Expected: False
+  But was:  True
+
+  Stack Trace:
+     at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_005_Repro_EmptyCartCheckout() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 141
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_005_Repro_EmptyCartCheckout() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 141
+
+
+  Failed TC_ISSUE_006_Repro_LoginPerformanceGlitch [6 s]
+  Error Message:
+     BUG REPRO: Login took 5,1381784 seconds, exceeding the 3s requirement.
+Assert.That(duration.TotalSeconds, Is.LessThan(3))
+  Expected: less than 3
+  But was:  5.1381784000000001d
+
+  Stack Trace:
+     at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_006_Repro_LoginPerformanceGlitch() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 170
+   at NUnit.Framework.Internal.AsyncToSyncAdapter.Await[TResult](Func`1 invoke)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.RunTestMethod(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.TestMethodCommand.Execute(TestExecutionContext context)
+   at NUnit.Framework.Internal.Commands.DelegatingTestCommand.RunTestMethodInThreadAbortSafeZone(TestExecutionContext context, Action action)
+
+1)    at SAHomeLoansSauceDemo.Tests.IssueTest.TC_ISSUE_006_Repro_LoginPerformanceGlitch() in C:\Dev\SAHomeLoans-saucedemo\tests\IssueTest.cs:line 170
+
+
+
+Failed!  - Failed:     7, Passed:    15, Skipped:     0, Total:    22, Duration: 21 s - SAHomeLoansSauceDemo.dll (net8.0)
