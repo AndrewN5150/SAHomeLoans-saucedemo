@@ -266,3 +266,6 @@ FakesAssemblies/
 
 # Test Evidence
 **/TestEvidence/
+
+# Ignore local test execution logs
+test_output.txt
