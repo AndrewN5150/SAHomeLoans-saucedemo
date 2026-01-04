@@ -14,7 +14,11 @@ public class BaseTest : PageTest
     public async Task BaseSetup()
     {
         // Load Configuration
-        var configRoot = ConfigLoader.Load();
+        var configRoot = new ConfigurationBuilder()
+        .SetBasePath(TestContext.CurrentContext.TestDirectory)
+        .AddJsonFile("config/appsettings.json", optional: false, reloadOnChange: true)
+        .Build();
+
 
         _config = new ConfigSettings();
         configRoot.Bind(_config); // or individual binding if preferred
