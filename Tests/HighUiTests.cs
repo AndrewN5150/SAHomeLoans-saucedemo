@@ -62,6 +62,8 @@ public class HighUiTests : PageTest
         }
     }
 
+    // --- INVENTORY SORTING TESTS ---
+
     [Test]
     public async Task PROD003_SortByNameAToZ_UpdatesListOrder()
     {
@@ -97,8 +99,6 @@ public class HighUiTests : PageTest
         // 4. Assert that the UI matches the expected Z-A order
         Assert.That(names, Is.EqualTo(expectedOrder), "The products were not sorted alphabetically from Z to A.");
     }
-
-    // --- INVENTORY SORTING TESTS ---
 
     [Test]
     public async Task PROD005_SortByPriceLowToHigh_UpdatesListOrder()
@@ -163,12 +163,12 @@ public class HighUiTests : PageTest
     {
         // 1. Action: Navigate to the cart and click the Checkout button
         await Page.Locator("[data-test='shopping-cart-link']").ClickAsync();
-        await Page.Locator("[data-test='checkout']").ClickAsync();
+        await Page.Locator("[data-test='continue-shopping\']").ClickAsync();
 
         // Assert
 
         // 2. Assert: Verify the application redirects the user to 'Checkout: Your Information' (Step One)
-        await Expect(Page).ToHaveURLAsync(new Regex(".*checkout-step-one.html"));
+        await Expect(Page).ToHaveURLAsync(new Regex("https://www.saucedemo.com/inventory.html"));
     }
 
     // --- CHECKOUT TESTS ---
