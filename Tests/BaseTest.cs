@@ -3,9 +3,12 @@ using Microsoft.Playwright;
 using Microsoft.Playwright.NUnit;
 using NUnit.Framework;
 using SAHomeLoansSauceDemo.Config;
+using Allure.NUnit;
+using Allure.Net.Commons;
 
 namespace SAHomeLoansSauceDemo.Tests;
 
+[AllureNUnit]
 public class BaseTest : PageTest
 {
     protected ConfigSettings _config;
@@ -47,7 +50,9 @@ public class BaseTest : PageTest
 
         // Take screenshot
         await Page.ScreenshotAsync(new() { Path = fullPath, FullPage = true });
+
         TestContext.AddTestAttachment(fullPath, $"{statusFolder} Evidence");
+        AllureApi.AddAttachment(screenshotName, "image/png", fullPath);
 
         // Using explisit close
         await Context.CloseAsync();
