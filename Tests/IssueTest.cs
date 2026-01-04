@@ -31,6 +31,7 @@ public class IssueTest : BaseTest
     {
         // Login as problem_user to trigger UI issues
         await _loginPage.LoginAsync("problem_user", _config.Password);
+        await _inventoryPage.WaitForPageToLoadAsync();
 
         // Requirement: Ensure images load correctly
         var image = Page.Locator(".inventory_item_img img").First;
@@ -46,6 +47,7 @@ public class IssueTest : BaseTest
     public async Task TC_ISSUE_002_Reproduce_SortingFailure()
     {
         await _loginPage.LoginAsync("problem_user", _config.Password);
+        await _inventoryPage.WaitForPageToLoadAsync();
 
         // Requirement: Sort Name (Z to A)
         await _inventoryPage.SortProductsAsync("za");
@@ -65,6 +67,7 @@ public class IssueTest : BaseTest
     public async Task TC_ISSUE_003_Reproduce_CartRemoveFailure()
     {
         await _loginPage.LoginAsync("problem_user", _config.Password);
+        await _inventoryPage.WaitForPageToLoadAsync();
 
         // Add item then try to remove it
         await _inventoryPage.AddProductToCartAsync("sauce-labs-backpack");

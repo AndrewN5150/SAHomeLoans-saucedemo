@@ -6,7 +6,7 @@ public class InventoryPage : BasePage
 {
     // Locators
     private ILocator ProductSortDropdown => _page.Locator("[data-test='product-sort-container']");
-    private ILocator InventoryItems => _page.Locator("[data-test='inventory-item']");
+    public ILocator InventoryItems => _page.Locator("[data-test='inventory-item']");
     private ILocator ShoppingCartLink => _page.Locator("[data-test='shopping-cart-link']");
 
     public InventoryPage(IPage page) : base(page) { }
@@ -45,5 +45,11 @@ public class InventoryPage : BasePage
     public async Task GoToCartAsync()
     {
         await ShoppingCartLink.ClickAsync();
+    }
+
+    public override async Task WaitForPageToLoadAsync()
+    {
+        // Wait for at least one item or the container to verify load
+        await _page.Locator(".inventory_list").WaitForAsync();
     }
 }

@@ -18,4 +18,13 @@ public abstract class BasePage
     {
         await _page.WaitForURLAsync(new System.Text.RegularExpressions.Regex(urlRegex));
     }
+
+    /// <summary>
+    /// Explicitly wait for a specific element that signifies the page is fully loaded.
+    /// Derived classes should override this to wait for their unique element.
+    /// </summary>
+    public virtual async Task WaitForPageToLoadAsync()
+    {
+        await Task.CompletedTask; // Default implementation does nothing
+    }
 }
