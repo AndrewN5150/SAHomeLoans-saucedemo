@@ -1,7 +1,7 @@
-## 🛒 SauceDemo E-Commerce Automation Framework
+# 🛒 SauceDemo E-Commerce Automation Framework
 This repository contains a professional test automation suite for the SauceDemo web application. It is built using C#, .NET 8.0, and Playwright, following the Page Object Model (POM) design pattern to ensure the tests are easy to read and maintain.
 
-#📋 Prerequisites
+## 📋 Prerequisites
 
 Before attempting to run the tests, ensure your environment is configured with the following:
 
@@ -11,7 +11,7 @@ PowerShell: Used for running installation scripts.
 
 IDE: Visual Studio 2022 or VS Code (with C# Dev Kit extension).
 
-# 🚀 Getting Started
+## 🚀 Getting Started
 
 Follow these steps to initialize the project on your local machine.
 
@@ -34,7 +34,7 @@ PowerShell
 
 pwsh bin/Debug/net8.0/playwright.ps1 install
 
-#🧪 Test Execution
+## 🧪 Test Execution
 
 You can run the automation suite directly from the command line or via the Test Explorer in Visual Studio.
 
@@ -52,7 +52,7 @@ PowerShell
 dotnet test --filter "Name~AUTH"
 dotnet test --filter "Name~CART"
 
-# 📊 Results and Reporting
+## 📊 Results and Reporting
 
 This framework is designed to provide visual evidence for every test run, which is critical for debugging and auditing.
 
@@ -63,7 +63,7 @@ TestEvidence/Pass: Contains full-page screenshots of successful test flows.
 
 TestEvidence/Fail: Contains screenshots taken at the exact moment a test encountered an error.
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 tests/: Contains the test logic and assertions (The "What" we are testing).
 
@@ -73,7 +73,7 @@ config/: Holds the appsettings.json file for managing environment variables like
 
 utils/: Shared helper methods and setup/teardown logic.
 
-#💡 Code Standards
+## 💡 Code Standards
 
 The tests are written to be "Self-Documenting." Each test follows a clear Setup → Action → Assert flow:
 
