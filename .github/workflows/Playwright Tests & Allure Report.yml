@@ -1,0 +1,84 @@
+name: Playwright Tests & Allure Report
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  schedule:
+    - cron: '0 0 * * *'  # Runs every day at midnight
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Build
+      run: dotnet build
+
+    - name: Ensure Playwright browsers are installed
+      run: pwsh bin/Debug/net8.0/playwright.ps1 install --with-deps
+
+    - name: Run tests (produce TRX + Allure results)
+      run: |
+        # Ensure results folders exist
+        mkdir -p TestResults
+        # Run tests and produce a TRX and (if configured in your test project) Allure results
+        dotnet test --logger "trx;LogFileName=TestResults.trx" --results-directory TestResults
+      continue-on-error: true
+
+    - name: Archive raw test results (artifact)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: raw-test-results
+        path: |
+          TestResults
+          bin/Debug/net8.0/allure-results
+
+    - name: Checkout gh-pages branch (load previous Allure history)
+      if: always()
+      uses: actions/checkout@v4
+      with:
+        ref: gh-pages
+        path: gh-pages
+        fetch-depth: 0
+      continue-on-error: true
+
+    - name: Generate Allure report (merge history + results)
+      if: always()
+      uses: simple-elf/allure-report-action@v1.7
+      with:
+        gh_pages: gh-pages
+        allure_results: bin/Debug/net8.0/allure-results
+        allure_history: gh-pages/allure-history
+
+    - name: Upload generated report (artifact)
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: allure-report
+        path: gh-pages/allure-report
+
+    - name: Publish report to gh-pages (GitHub Pages)
+      if: always()
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_branch: gh-pages
+        publish_dir: gh-pages
+        user_name: github-actions[bot]
+        user_email: github-actions[bot]@users.noreply.github.com
