@@ -25,4 +25,9 @@ public class CartPage : BasePage
     {
         await ContinueShoppingButton.ClickAsync();
     }
+
+    public override async Task WaitForPageToLoadAsync()
+    {
+        await CheckoutButton.WaitForAsync();
+    }
 }

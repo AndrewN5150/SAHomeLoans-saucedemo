@@ -269,3 +269,11 @@ FakesAssemblies/
 
 # Ignore local test execution logs
 test_output.txt
+
+# Playwright
+test-results/
+playwright-report/
+playwright-log.txt
+
+# VS Code
+.vscode/

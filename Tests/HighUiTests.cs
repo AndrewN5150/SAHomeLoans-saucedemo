@@ -47,8 +47,7 @@ public class HighUiTests : BaseTest
         };
 
         // 2. Ensure the catalog contains exactly 6 items
-        var count = await _inventoryPage.GetProductCountAsync();
-        Assert.That(count, Is.EqualTo(6));
+        await Expect(_inventoryPage.InventoryItems).ToHaveCountAsync(6);
 
         // 3. Validate each item
         foreach (var expected in expectedProducts)

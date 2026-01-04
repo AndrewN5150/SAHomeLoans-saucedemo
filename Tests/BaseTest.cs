@@ -22,8 +22,7 @@ public class BaseTest : PageTest
         _config = new ConfigSettings();
         configRoot.Bind(_config); // or individual binding if preferred
 
-        // You could also configure the BrowserContextOptions here if you wanted specific viewport, etc.
-        // For PageTest, Page is auto-initialized by Playwright.NUnit, but let's navigate to BaseUrl.
+        // Navigate to BaseUrl.
         await Page.GotoAsync(_config.BaseUrl);
     }
 

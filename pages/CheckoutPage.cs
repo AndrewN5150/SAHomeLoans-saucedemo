@@ -46,4 +46,19 @@ public class CheckoutPage : BasePage
     public ILocator GetSubtotalLabel() => SubtotalLabel;
     public ILocator GetTaxLabel() => TaxLabel;
     public ILocator GetTotalLabel() => TotalLabel;
+
+    public override async Task WaitForPageToLoadAsync()
+    {
+        await WaitForInformationPageAsync();
+    }
+
+    public async Task WaitForInformationPageAsync()
+    {
+        await FirstNameInput.WaitForAsync();
+    }
+
+    public async Task WaitForOverviewPageAsync()
+    {
+        await FinishButton.WaitForAsync();
+    }
 }
