@@ -11,7 +11,7 @@ PowerShell: Used for running installation scripts.
 
 IDE: Visual Studio 2022 or VS Code (with C# Dev Kit extension).
 
-#🚀 Getting Started
+# 🚀 Getting Started
 
 Follow these steps to initialize the project on your local machine.
 
