@@ -19,15 +19,6 @@ If i was testing the website (https://www.saucedemo.com) professionaly, i would 
 	- On the information page i would test validation for First Name, Last Name and Zip Code
 	To name a few
 
-Additionally, I wrote 3 API tests for https://reqres.in. These tests cover:
-1. POST (Registration)
-2. GET (User)
-3. DELETE (User)
-
-I found these API tests to be the most beneficial.
-If i was testing the website (https://reqres.in/) professionaly, i would add these tests.
-- I would test the PUT and PATCH Api calls 
-
 ## Installation
 Follow these steps to set up the project:
 
