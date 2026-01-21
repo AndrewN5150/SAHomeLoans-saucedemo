@@ -8,6 +8,7 @@ Before attempting to run the tests, ensure your environment is configured with t
 .NET 8.0 SDK: The core runtime for executing C# code. Download here.
 
 PowerShell: Used for running installation scripts.
+(cmd - administrator) : " winget install --id Microsoft.PowerShell --source winget "
 
 IDE: Visual Studio 2022 or VS Code (with C# Dev Kit extension).
 
@@ -16,21 +17,25 @@ IDE: Visual Studio 2022 or VS Code (with C# Dev Kit extension).
 Follow these steps to initialize the project on your local machine.
 
 1. Initialize the Project
+
 Open your terminal in the project root folder and run the following command to download all necessary libraries:
 
-PowerShell
+PowerShell/
 
 dotnet restore
+
 2. Build the Solution
+
 Compile the code to ensure the environment is ready:
 
-PowerShell
+PowerShell/
 
 dotnet build
+
 3. Install Playwright Browsers
 Playwright requires specific browser binaries to control Chrome, Firefox, and WebKit. Run this command to install them:
 
-PowerShell
+PowerShell / run as administrator
 
 pwsh bin/Debug/net8.0/playwright.ps1 install
 
@@ -50,6 +55,7 @@ To run tests related to a specific area (like Authentication or Cart):
 PowerShell
 
 dotnet test --filter "Name~AUTH"
+
 dotnet test --filter "Name~CART"
 
 ## 📊 Results and Reporting
