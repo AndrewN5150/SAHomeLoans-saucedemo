@@ -22,12 +22,14 @@ Open your terminal in the project root folder and run the following command to d
 PowerShell
 
 dotnet restore
+
 2. Build the Solution
 Compile the code to ensure the environment is ready:
 
 PowerShell
 
 dotnet build
+
 3. Install Playwright Browsers
 Playwright requires specific browser binaries to control Chrome, Firefox, and WebKit. Run this command to install them:
 
