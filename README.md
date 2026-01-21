@@ -17,16 +17,18 @@ IDE: Visual Studio 2022 or VS Code (with C# Dev Kit extension).
 Follow these steps to initialize the project on your local machine.
 
 1. Initialize the Project
+
 Open your terminal in the project root folder and run the following command to download all necessary libraries:
 
-PowerShell
+PowerShell/
 
 dotnet restore
 
 2. Build the Solution
+
 Compile the code to ensure the environment is ready:
 
-PowerShell
+PowerShell/
 
 dotnet build
 
